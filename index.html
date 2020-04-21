@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #root {
+            background: red;
+            position: absolute;
+            font-size: 50px;
+            color: white;
+            padding: 10px 40px 10px 40px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script>
+    // 获取DOM元素
+    var root = document.getElementById('root');
+
+    // 初始化时间
+    getTime();
+
+    // 通过BOM的方法获取浏览器宽度和元素宽度 使这个DOM元素居中
+    //root.style.left = ;
+    //root.style.top = ;
+
+    // 格式化时间：如果这个时/分/秒只有1位则前面补一位0
+    function addZero(t) {
+        var num;
+        t > 10 ? num = t : num = "0" + t;
+        return num;
+    };
+
+    // 获取当前时间
+    function getTime() {
+        var date = new Date(); //时间对象
+        var hours = date.getHours(); //小时
+        var minute = date.getMinutes(); //分
+        var second = date.getSeconds(); //秒
+        var time = addZero(hours) + ":" + addZero(minute) + ":" + addZero(second);
+        root.innerHTML = time;
+    };
+
+    // 使用定时器每秒触发一次获取时间
+    // 这里请写定时器部分的代码
+    window.onload = function() {
+        setInterval(function() {
+            getTime();
+        }, 1000);
+    };
+</script>
+
+</html>
